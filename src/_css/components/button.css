@@ -1,0 +1,46 @@
+.btn {
+    @apply no-underline shadow;
+    padding: 0.5em 2em 0.49em;
+    transition: all 0.2s ease 0s;
+}
+.btn-black {
+    @apply text-white bg-black border-2 border-transparent;
+    fill: config('colors.white');
+}
+.btn-black:hover,
+.btn-black:active {
+    @apply text-black bg-white border-2 border-black;
+    fill: config('colors.black');
+}
+
+.btn-underline {
+    @apply text-black bg-white border-2 border-black;
+    fill: config('colors.black');
+}
+.btn-underline:hover,
+.btn-underline:active {
+    @apply underline;
+}
+
+.tooltip {
+    @apply cursor-pointer relative inline-block border-b border-dotted;
+
+}
+
+.tooltiptext {
+  @apply invisible bg-black text-white text-left p-0.5 rounded-lg absolute ;
+  left: 105%;
+  bottom: 105%;
+  z-index: 1;
+}
+
+.toggle-input:not(checked) ~ .toggle-content{
+  @apply hidden;
+}
+
+.toggle-all-input:checked ~ .toggle-all-content .toggle-content{
+  @apply block;
+}
+.toggle-input:checked ~ .toggle-content{
+  @apply block;
+}

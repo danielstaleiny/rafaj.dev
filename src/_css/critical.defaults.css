@@ -1,0 +1,97 @@
+.blockquote,
+.dl,
+.dd,
+.figure,
+.p,
+.pre,
+.div {
+    @apply mb-1;
+}
+
+p {
+    @apply max-w-36;
+}
+
+/* space after element */
+p::after {
+    content: "\200B";
+}
+
+code {
+    @apply bg-gray-300 p-0.5 font-sans;
+}
+
+.h1,
+.h2,
+.h3,
+.h4 {
+    @apply tracking-tight;
+}
+
+.h1 {
+    @apply mt-3 mb-1 text-h1 leading-tight;
+}
+
+.h2 {
+    @apply mt-2 mb-0.5 text-h2 leading-tight;
+}
+
+.h3 {
+    @apply mt-2 mb-0.5 text-h3 leading-tight;
+}
+
+.h4 {
+    @apply mt-1 mb-0 text-h4 leading-snug;
+}
+
+.h5 {
+    @apply mt-1 mb-0 text-xl leading-normal;
+}
+
+.h6 {
+    @apply mt-1 mb-0 text-lg leading-normal;
+}
+
+.input,
+.textarea {
+    @apply appearance-none py-0.25 px-0.5;
+}
+
+.caps {
+    @apply uppercase;
+    @apply tracking-wide;
+}
+
+a {
+    @apply no-underline cursor-pointer outline-none text-black border-b;
+}
+
+a:hover {
+    @apply bg-green-500;
+}
+
+a:active {
+    /* @apply bg-yellow; */
+}
+
+a:visited {
+    /* @apply bg-red; */
+}
+
+/* Sets so the footer stay always on the bottom. */
+main {
+    @apply flex-1;
+}
+
+video,
+img {
+    @apply outline-none;
+    @apply w-full;
+}
+
+@screen t {
+    video,
+    img {
+        @apply w-auto;
+    }
+}

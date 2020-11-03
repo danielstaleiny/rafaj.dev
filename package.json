@@ -1,0 +1,58 @@
+{
+  "name": "Web",
+  "scripts": {
+    "prestart": "run-s clean",
+    "start": "run-p develop:*",
+    "prebuild": "run-p clean",
+    "build": "run-s build:*",
+    "dev": "npm run start",
+    "build:generate": "NODE_ENV=production run-s 11ty:build postcss:build:critical postcss:build:async",
+    "develop:generate": "run-p 11ty:watch postcss:watch:critical postcss:watch:async cheatsheet",
+    "clean": "run-p clean:*",
+    "clean:cache": "rimraf .tmp",
+    "clean:site": "rimraf _site",
+    "11ty:build": "eleventy",
+    "11ty:watch": "ELEVENTY_ENV=development eleventy --watch --serve",
+    "postcss:build:critical": "postcss src/_css/critical.css -o _site/_css/critical.css",
+    "postcss:build:async": "postcss src/_css/index.css -o _site/_css/index.css",
+    "postcss:watch:critical": "postcss src/_css/critical.css -o _site/_css/critical.css --watch",
+    "postcss:watch:async": "postcss src/_css/index.css -o _site/_css/index.css --watch",
+    "prettier:fix": "prettier --write '**/*.js' ",
+    "cheatsheet": "node util/generate-cheatsheet.js",
+    "upgrade": "run-s upgrade:*",
+    "upgrade:check": "npm-check-updates -u",
+    "upgrade:install": "npm install",
+    "upgrade:git-unstage-all": "git restore --staged .",
+    "upgrade:git-stage-changes": "git add package.json package-lock.json",
+    "upgrade:git-auto-commit": "git commit -m 'Upgrade npm packages'; true"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@11ty/eleventy": "^0.11.1",
+    "fast-glob": "^3.2.4",
+    "js-beautify": "^1.13.0",
+    "npm-check-updates": "^9.2.3",
+    "npm-run-all": "^4.1.5",
+    "nunjucks": "^3.2.2",
+    "autoprefixer": "^10.0.1",
+    "postcss": "^8.1.4",
+    "postcss-cli": "^8.2.0",
+    "postcss-easy-import": "^3.0.0",
+    "prettier": "^2.1.2",
+    "rimraf": "^3.0.2",
+    "tailwindcss": "^1.9.6"
+  },
+  "author": "daniel.rafaj@gmail.com",
+  "license": "GPL3",
+  "prettier": {
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true,
+    "bracketSpacing": true,
+    "printWidth": 80
+  },
+  "browserslist": [
+    "last 1 version",
+    "> 1%"
+  ]
+}
