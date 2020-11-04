@@ -43,8 +43,10 @@ const txt = Object.keys(config.cheatsheet).map((key) => {
     const tip = !!config.cheatsheet[key][key2].tip
       ? `${config.cheatsheet[key][key2].tip}`
       : ''
-    const desc = ''
-    // const desc = !!config.cheatsheet[key][key2].desc ? ` - ${config.cheatsheet[key][key2].desc}\n` : ''
+    // const desc = ''
+    const desc = !!config.cheatsheet[key][key2].desc
+      ? ` - ${config.cheatsheet[key][key2].desc}\n`
+      : ''
 
     // With values
     // return `${subhead} ${variant} ${tip}\n${desc}  ${config.cheatsheet[key][key2].value.map(obj=>{return `${Object.keys(obj).map(key3=>{return `${key3}: ${obj[key3]}`})}`}).join('\n  ')}`

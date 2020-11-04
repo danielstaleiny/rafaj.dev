@@ -1,8 +1,24 @@
-.btn {
-    @apply no-underline shadow;
-    padding: 0.5em 2em 0.49em;
-    transition: all 0.2s ease 0s;
+.btn, .btn:visited {
+    @apply no-underline border-black;
+    padding: 0.25em 0.5em 0.24em;
+    transition: border 0.2s ease 0s;
 }
+
+.btn:hover, .btn:focus {
+  @apply border-orange-base;
+}
+
+@screen t {
+  .btn, .btn:visited {
+    @apply border-bg;
+  }
+
+  .btn:hover,.btn:focus {
+    @apply border-black;
+  }
+}
+
+
 .btn-black {
     @apply text-white bg-black border-2 border-transparent;
     fill: config('colors.white');

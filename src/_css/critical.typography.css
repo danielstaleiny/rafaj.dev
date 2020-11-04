@@ -44,41 +44,41 @@ body {
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     font-feature-settings: "liga" on;
-    @apply text-black;
+    @apply text-fg bg-bg;
 }
 @media (min-width: 46.25em) and (max-width: 50em){
     body {
-        line-height: 1.7;
+        line-height: 1.5;
     }
 }
 @media (min-width: 50em) and (max-width: 63.75em) {
     body {
-        line-height: 1.7;
+        line-height: 1.5;
     }
 }
 @media (min-width: 63.75em) and (max-width: 79em) {
     body {
-        line-height: 1.7;
+        line-height: 1.5;
     }
 }
 @media (min-width: 79em) and (max-width: 125em) {
     body {
-        line-height: 1.8;
+        line-height: 1.6;
     }
 }
 @media (min-width: 125em) and (max-width: 200em) {
     body {
-        line-height: 1.8;
+        line-height: 1.6;
     }
 }
 @media (min-width: 200em) and (max-width: 400em) {
     body {
-        line-height: 1.8;
+        line-height: 1.6;
     }
 }
 @media (min-width: 400em) {
     body {
-        line-height: 1.8;
+        line-height: 1.6;
     }
 }
 

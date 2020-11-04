@@ -1,0 +1,2 @@
+* Tasks
+** TODO Add support for images, think about extenstion, and optimize images, should it be local or something like serverless resizing should be used ? something which everybody can use.
