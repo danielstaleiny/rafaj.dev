@@ -1,7 +1,9 @@
 {% extends "extends/html5boilerplate.njk" %}
 
-{% set title = (title + " - " + site.title) if title else (site.title) %}
+{#% set title = (title + " - " + site.title) if title else (site.title) %#}
 {% set lang = lang | default(site.lang) %}
+{% set description = description | default(site.description) %}
+{% set author = author | default(site.author) %}
 
 {% block headStyles %}
     {% include "partials/styles-critical.njk" %}
