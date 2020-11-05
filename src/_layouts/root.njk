@@ -1,11 +1,14 @@
 ---
 layout: base.njk
 ---
-<main class="page">
-    {% include "partials/header.njk" %}
+<div class="page">
+  {% include "partials/header.njk" %}
+  <main>
     <article class="container">
       <div class="mx-auto max-w-40 w-full">
             {{ content | safe }}
       </div>
     </article>
-</main>
+  </main>
+  {% include "partials/footer.njk" %}
+</div>
