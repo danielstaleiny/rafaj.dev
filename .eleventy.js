@@ -2,6 +2,7 @@
 
 const glob = require('fast-glob')
 const path = require('path')
+const pluginRss = require('@11ty/eleventy-plugin-rss')
 
 /**
  * The @11ty/eleventy configuration.
@@ -9,6 +10,8 @@ const path = require('path')
  * For a full list of options, see: https://www.11ty.io/docs/config/
  */
 module.exports = (eleventyConfig) => {
+  eleventyConfig.addPlugin(pluginRss)
+
   const paths = {
     filters: path.join(process.cwd(), 'lib/filters/*.js'),
     shortcodes: path.join(process.cwd(), 'lib/shortcodes/*.js'),

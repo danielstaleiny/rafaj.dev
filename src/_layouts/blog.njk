@@ -3,15 +3,15 @@ layout: base.njk
 ---
 <main class="page">
     {% include "partials/header.njk" %}
-    <section class="container">
+    <article class="container">
       <div class="mx-auto max-w-40 w-full">
-        <h2 class="h1">
+        <h1 class="h1">
           {{ title }}
-        </h2>
+        </h1>
         <p class="text-right italic">
           Written on {{date.toUTCString().substring(0, 16)}}
         </p>
         {{ content | safe }}
       </div>
-    </section>
+    </article>
 </main>

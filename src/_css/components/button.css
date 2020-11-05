@@ -1,22 +1,31 @@
-.btn, .btn:visited {
+.btn {
     @apply no-underline border-black;
     padding: 0.25em 0.5em 0.24em;
     transition: border 0.2s ease 0s;
 }
 
-.btn:hover, .btn:focus {
+.btn:hover {
   @apply border-orange-base;
 }
 
+.btn-active {
+  @apply border-black;
+}
 @screen t {
-  .btn, .btn:visited {
+  .btn {
     @apply border-bg;
   }
 
-  .btn:hover,.btn:focus {
+  .btn:hover {
     @apply border-black;
   }
+
+  .btn-active {
+    @apply border-orange-base;
+  }
 }
+
+
 
 
 .btn-black {

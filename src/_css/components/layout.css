@@ -8,13 +8,14 @@
 .w {
     @apply w-full;
 }
-.w-screen {
-    @apply max-w-full;
-}
 @screen t {
     .w {
         @apply w-auto;
     }
+}
+
+.w-screen {
+    @apply max-w-full;
 }
 
 .row {

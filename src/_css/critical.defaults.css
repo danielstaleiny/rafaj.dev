@@ -77,18 +77,30 @@ a {
     @apply no-underline cursor-pointer outline-none text-fg border-fg border-b-0.125;
 }
 
-
-a:visited {
+article a:visited {
     @apply border-orange-base;
 }
 
-a:hover {
+article a:hover {
     @apply border-green-700 ;
 }
 
-a:active {
+article a:active {
     @apply border-green-400;
 }
+
+.a:visited {
+    @apply border-orange-base;
+}
+
+.a:hover {
+    @apply border-green-700 ;
+}
+
+.a:active {
+    @apply border-green-400;
+}
+
 .btn {
     @apply border-bg;
 }

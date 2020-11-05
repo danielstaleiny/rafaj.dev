@@ -1,0 +1,13 @@
+---
+layout: root.njk
+title: Daniel Rafaj Blog Archive
+description: Past, future and present. List of Daniel Rafaj posts.
+---
+<h1 class="h1">Archive</h1>
+{% for post in collections.blog | reverse %}
+  <div>
+    <h2><a href="{{post.url}}">{{post.data.title}}</a></h2>
+    <p>{{post.data.description}}</p>
+    <em class="italic">{{ post.date.toUTCString().substring(0, 16) }}</em>
+  </div>
+{% endfor %}

@@ -1,0 +1,17 @@
+---
+layout: base.njk
+---
+<main class="page">
+  <header class="container">
+    <div class="mx-auto max-w-40 w-full mt-1 text-right t:text-left">
+    <ul class="italic space-y-1 t:space-y-auto text-lg t:flex t:flex-row">
+        <li><a class="btn" href="{{ "https://rafaj.dev" if config.isproduction else "/" }}">rafaj.dev</a></li>
+    </ul>
+    </div>
+  </header>
+    <section class="container">
+      <div class="mx-auto max-w-40 w-full">
+            {{ content | safe }}
+      </div>
+    </section>
+</main>

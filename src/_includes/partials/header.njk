@@ -1,13 +1,17 @@
   <header class="container">
     <div class="mx-auto max-w-40 w-full mt-1 text-right t:text-left">
     <ul class="italic space-y-1 t:space-y-auto text-lg t:flex t:flex-row">
-        <li><a class="btn" href="/">home</a></li>
-        <li><a class="btn" href="/b">blog</a></li>
-        <li><a class="btn" href="/a">about</a></li>
-        <li><a class="btn" href="/c">curation</a></li>
-        <li><a class="btn" href="/p">photos</a></li>
-        <li class="flex-1"><a class="btn" href="/feed.xml">follow/rss</a></li>
-        <li><h1><a class="no-underline border-none" href="daniel.rafaj.dev">Daniel Rafaj</a></h1></li>
+        <li><a {% if page.url == '/' %}class="btn btn-active" aria-current="page"{% else %}class="btn"{% endif %} href="/">root</a></li>
+        <li><a {% if page.url == '/b/' %}class="btn btn-active" aria-current="page"{% else %}class="btn"{% endif %} href="/b">blog</a></li>
+        <li><a {% if page.url == '/a/' %}class="btn btn-active" aria-current="page"{% else %}class="btn"{% endif %} href="/a">about</a></li>
+        <!-- <li><a {% if page.url == '/c/' %}class="btn btn-active" aria-current="page"{% else %}class="btn"{% endif %} href="/c">curation</a></li>
+             <li><a {% if page.url == '/p/' %}class="btn btn-active" aria-current="page"{% else %}class="btn"{% endif %} href="/p">photos</a></li> -->
+        <li class="flex-1">
+          <a class="btn pr-0" href="/feed.json">follow</a>
+          <span>/</span>
+          <a class="btn pl-0" href="/feed.xml">rss</a>
+        </li>
+        <li><h1><a class="no-underline border-none" href=" {{ "https://daniel.rafaj.dev" if config.isproduction else "/daniel-rafaj" }}">Daniel Rafaj</a></h1></li>
     </ul>
     </div>
   </header>
