@@ -1,0 +1,12 @@
+---
+layout: base.njk
+---
+<div class="h-feed hfeed page">
+  {% include "partials/header.njk" %}
+    <main class="container">
+      <div class="mx-auto max-w-40 w-full">
+            {{ content | safe }}
+      </div>
+  </main>
+  {% include "partials/footer.njk" %}
+</div>
