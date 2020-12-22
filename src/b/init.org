@@ -1,0 +1,15 @@
+#+TITLE: Init
+#+OPTIONS: toc:nil
+#+BEGIN_EXPORT markdown
+---
+title: Init
+layout: blog.njk
+date: 2020-10-10
+tags:
+  - blog
+  - post
+description: This blog was created in 2020.
+---
+#+END_EXPORT
+
+Ownership of my data starts now. 2020 is the year.
