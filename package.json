@@ -1,5 +1,5 @@
 {
-  "name": "Web",
+  "name": "rafaj.dev",
   "scripts": {
     "prestart": "run-s clean",
     "start": "run-p develop:*",

@@ -1,2 +1,6 @@
 * Tasks
 ** TODO Add support for images, think about extenstion, and optimize images, should it be local or something like serverless resizing should be used ? something which everybody can use.
+
+
+
+* TODO Have a look on how to use org file, and then export it to markdown files, don't commit markdown, push org only.

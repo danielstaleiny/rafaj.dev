@@ -1,4 +1,4 @@
-# Web
+# Rafaj.dev personal website
 
 ```bash
 npm i 
