@@ -10,7 +10,7 @@ description: Past, future and present. List of Daniel Rafaj posts.
       <h2 class="p-name entry-title">{{post.data.title}}</h2>
     </a>
     <p class="p-summary entry-summary">{{post.data.description}}</p>
-    <em class="italic"><time class="dt-published published" datetime="{{ post.date }}">{{ post.date.toUTCString().substring(0, 16) }}</time></em>
+    <em class="italic"><time class="dt-published published" datetime="{{ post.date.toISOString() }}">{{ post.date.toUTCString().substring(0, 16) }}</time></em>
     <!-- <a href="/category/uncategorized/" rel="category tag" class="p-category">General</a> <!-- Example -->
   </article>
 {% endfor %}
