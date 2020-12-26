@@ -13,3 +13,13 @@ Posting content about technology, making websites and anything software or hardw
     <em class="italic">{{ post.date.toUTCString().substring(0, 16) }}</em>
   </div>
 {% endfor %}
+
+<h2>Testing login</h2>
+<form action="https://indielogin.com/auth" method="get">
+  <label for="url">Web Address:</label>
+  <input id="url" type="text" name="me" placeholder="yourdomain.com" />
+  <p><button type="submit">Sign In</button></p>
+  <input type="hidden" name="client_id" value="https://rafaj.dev/" />
+  <input type="hidden" name="redirect_uri" value="https://rafaj.dev/b/" />
+  <input type="hidden" name="state" value="jwiusuerujo" />
+</form>
