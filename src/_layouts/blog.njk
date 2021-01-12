@@ -11,7 +11,7 @@ layout: base.njk
         <p class="text-right italic">
           <time class="dt-published" datetime="{{ date.toISOString() }}">Written on {{date.toUTCString().substring(0, 16)}}</time>
         </p>
-        <div class="e-content">
+        <div class="e-content mt-1">
         {{ content | safe }}
         </div>
       </div>
