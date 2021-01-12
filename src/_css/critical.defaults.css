@@ -4,7 +4,10 @@
 .figure,
 .p,
 .pre,
-.div {
+.div,
+.e-content p,
+.e-content h2
+{
     @apply mb-1;
 }
 
