@@ -5,7 +5,7 @@ date: 2021-01-12
 tags:
   - blog
   - post
-description: Thinking about core aspects of social media and what is was ment to be, to connect. Let's design social media without needing 3th party website while make it accessible for everybody.
+description: Thinking about core principles of social media and what it ment to be. Let's design social media without needing 3th party website while make it accessible for everybody.
 ---
 
 What is Social media and what makes is social ? I believe that social media, is about connecting to people, sharing with people we know and colaborating on ideas. Do we need to earn money on our social media content ? I don&rsquo;t think we need to. We share information with others, because we want to reach them fast and easily by publishing written post or captured photo. What is beautifull is that our friends an people who follow us (subscribe to our content) can read/check our content when they have time.
