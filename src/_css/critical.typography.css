@@ -92,9 +92,18 @@ input::placeholder, textarea::placeholder {
 }
 
 ul, ol {
-    @apply pl-1;
     list-style-position: outside;
 }
+
 li {
+    @apply list-none;
+}
+
+
+.e-content ul,.e-content ol {
+    @apply pl-1;
+}
+
+.e-content li {
     @apply list-disc mb-0.25;
 }
