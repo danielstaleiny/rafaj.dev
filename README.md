@@ -16,3 +16,8 @@ Build static site
 ```bash
 npm run build
 ```
+
+
+To add feed into the reader -> https://aperture.p3k.io/dashboard
+
+to read feed -> https://monocle.p3k.io/
