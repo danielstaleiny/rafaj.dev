@@ -25,7 +25,9 @@
     "upgrade:git-stage-changes": "git add package.json package-lock.json",
     "upgrade:git-auto-commit": "git commit -m 'Upgrade npm packages'; true"
   },
-  "dependencies": {},
+  "dependencies": {
+    "dotenv": "^8.2.0"
+  },
   "devDependencies": {
     "@11ty/eleventy": "^0.11.1",
     "@11ty/eleventy-plugin-rss": "^1.1.0",
