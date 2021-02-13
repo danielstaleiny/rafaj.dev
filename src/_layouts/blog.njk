@@ -8,11 +8,24 @@ layout: base.njk
         <h1 class="p-name h1">
           {{ title }}
         </h1>
+        <p class="hidden">
+          <a class="u-url" href="{{ page.url }}">{{ page.url }}</a>
+        </p>
         <p class="text-right italic">
-          <time class="dt-published" datetime="{{ date.toISOString() }}">Written on {{date.toUTCString().substring(0, 16)}}</time>
+          <time class="dt-published" datetime="{{ page.date.toISOString() }}">Written on {{date.toUTCString().substring(0, 16)}}</time>
         </p>
         <div class="e-content mt-1">
         {{ content | safe }}
+        </div>
+      </div>
+      <div class="hidden">
+        <div class="h-card mx-auto max-w-40 w-full mt-1">
+          <span class="p-name">Daniel Rafaj</span>
+          <a class="p-org" href="http://indsigt.design">indsigt.design</a>
+          <img class="u-photo" src="/_img/icon.png"/>
+          <a class="u-url" href="https://rafaj.dev">rafaj.dev</a>
+          <a class="u-email" href="mailto:hala-bala@tutanota.com">hala-bala@tutanota.com</a>
+          <div class="p-category hidden">technology</div>
         </div>
       </div>
     </article>
