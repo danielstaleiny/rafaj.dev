@@ -8,6 +8,6 @@ tags:
   - ""
 category:
   - ""
-bookmark-of: https://hala-bala.tumblr.com/post/145877609940
+bookmarkof: https://hala-bala.tumblr.com/post/145877609940
 ---
 bookmark ? :)
