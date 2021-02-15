@@ -1,3 +1,25 @@
 ---
-layout: blog.njk
+layout: base.njk
 ---
+<main class="page">
+    {% include "partials/header.njk" %}
+    <article class="h-entry container mb-4">
+      <div class="mx-auto max-w-40 w-full">
+        <h1 class="p-name h1">
+          {{ title }}
+        </h1>
+
+        {% include "partials/u-url.njk" %}
+
+        <p class="text-right italic">
+          <time class="dt-published" datetime="{{ page.date.toISOString() }}">Written on {{date.toUTCString().substring(0, 16)}}</time>
+        </p>
+        <div class="e-content mt-1">
+        {{ content | safe }}
+        </div>
+      </div>
+      {% include "partials/h-card.njk" %}
+    </article>
+</main>
+
+
