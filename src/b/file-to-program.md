@@ -2,6 +2,7 @@
 title: File to program
 layout: blog.njk
 date: 2021-01-14
+posttype: blog
 tags:
   - blog
   - post

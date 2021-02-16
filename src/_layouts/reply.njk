@@ -1,20 +1,19 @@
 ---
-layout: base.njk
+layout: base-reply.njk
 ---
 <main class="page">
     {% include "partials/header.njk" %}
     <article class="h-entry container mb-4">
       <div class="mx-auto max-w-40 w-full">
-        <h1 class="p-name h1">
-          {{ title }}
+        <h1 class="p-name h3">
+            <p class="italic">In reaction to <a href="{{ inreplyto }}">{{ inreplyto | removehttp }}</a></p>
         </h1>
 
         {% include "partials/u-url.njk" %}
 
         <p class="text-right italic">
-          <time class="dt-published" datetime="{{ page.date.toISOString() }}">Created on {{date.toUTCString().substring(0, 16)}}</time>
+          <time class="dt-published" datetime="{{ page.date.toISOString() }}">Created on {{page.date.toUTCString().substring(0, 16)}}</time>
         </p>
-        <p class="italic">In reaction to <a href="{{ inreplyto }}">{{ inreplyto }}</a></p>
         <div class="e-content mt-1">
         {{ content | safe }}
         </div>

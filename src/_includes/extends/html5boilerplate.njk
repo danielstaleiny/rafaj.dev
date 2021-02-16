@@ -3,7 +3,9 @@
 
 <head>
   {% block headMeta %}
-    <title>{{ title }}</title>
+    {% if title %}
+        <title>{{ title }}</title>
+    {% endif %}
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="{{ description }}">

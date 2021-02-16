@@ -5,6 +5,7 @@
 title: Offline first
 layout: blog.njk
 date: 2020-12-22
+posttype: blog
 tags:
   - blog
   - post

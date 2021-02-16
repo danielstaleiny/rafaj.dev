@@ -2,6 +2,7 @@
 title: Re-thinking Social media
 layout: blog.njk
 date: 2021-01-12
+posttype: blog
 tags:
   - blog
   - post

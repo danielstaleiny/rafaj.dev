@@ -5,6 +5,7 @@
 title: Init
 layout: blog.njk
 date: 2020-10-10
+posttype: blog
 tags:
   - blog
   - post

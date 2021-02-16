@@ -1,0 +1,28 @@
+{% extends "extends/html5boilerplate.njk" %}
+
+{% set lang = lang | default(site.lang) %}
+{% set description = description | default(site.description) %}
+{% set author = author | default(site.author) %}
+
+{% block headStyles %}
+    {% include "partials/styles-critical.njk" %}
+    {% include "partials/styles.njk" %}
+    {% include "partials/scripts.njk" %}
+{% endblock %}
+
+{% block headMisc %}
+{% if not title %}
+        <title>In reaction to {{ inreplyto | removehttp }}</title>
+{% endif %}
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="apple-touch-icon" href="/_img/icon.png">
+{% endblock %}
+
+{% block body %}
+    {{ super() }}
+
+    {{ content | safe }}
+{% endblock %}
+
+{% block bodyScripts %}
+{% endblock %}
