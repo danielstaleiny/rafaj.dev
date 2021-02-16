@@ -11,7 +11,7 @@ description: Past, future and present. List of Daniel Rafaj posts.
     <h2 class="p-name entry-title">
       <a class="u-url" href="{{post.url}}" rel="bookmark">
         {{post.url}}
-          <p class="text-h4">{{post.data.title}}</p>
+          <p class="text-h4">{{post.data.title}} <span class="italic align-top text-sm tracking-normal">{{ post.data.posttype | default("notype") }}</span></p>
       </a>
     </h2>
     <p class="p-summary entry-summary">{{post.data.description}}</p>
