@@ -12,8 +12,9 @@ layout: base.njk
         {% include "partials/u-url.njk" %}
 
         <p class="text-right italic">
-          <time class="dt-published" datetime="{{ page.date.toISOString() }}">Written on {{date.toUTCString().substring(0, 16)}}</time>
+          <time class="dt-published" datetime="{{ page.date.toISOString() }}">Created on {{date.toUTCString().substring(0, 16)}}</time>
         </p>
+        <p class="italic">In reaction to <a href="{{ inreplyto }}">{{ inreplyto }}</a></p>
         <div class="e-content mt-1">
         {{ content | safe }}
         </div>
