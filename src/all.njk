@@ -5,15 +5,18 @@ allignore: true
 description: Past, future and present. List of Daniel Rafaj posts.
 ---
 <h1 class="h1">Archive</h1>
-{% for post in collections.blog | reverse %}
+{% for post in collections.all | reverse %}
+{% if not post.data.allignore %}
   <article class="h-entry hentry">
     <h2 class="p-name entry-title">
       <a class="u-url" href="{{post.url}}" rel="bookmark">
-        {{post.data.title}}
+        {{post.url}}
+          <p class="text-h4">{{post.data.title}}</p>
       </a>
     </h2>
     <p class="p-summary entry-summary">{{post.data.description}}</p>
     <em class="italic"><time class="dt-published published" datetime="{{ post.date.toISOString() }}">{{ post.date.toUTCString().substring(0, 16) }}</time></em>
     <!-- <a href="/category/uncategorized/" rel="category tag" class="p-category">General</a> <!-- Example -->
   </article>
+{% endif %}
 {% endfor %}
