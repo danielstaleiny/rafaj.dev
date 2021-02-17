@@ -1,12 +1,12 @@
 ---
-layout: base.njk
+layout: base-re.njk
 ---
 <main class="page">
     {% include "partials/header.njk" %}
     <article class="h-entry container mb-4">
       <div class="mx-auto max-w-40 w-full">
-        <h1 class="p-name h1">
-          {{ title }}
+        <h1 class="p-name h3">
+            <p class="italic">Repost of <a href="{{ repostof }}">{{ repostof | removehttp }}</a></p>
         </h1>
 
         {% include "partials/u-url.njk" %}

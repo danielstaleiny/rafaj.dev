@@ -11,8 +11,10 @@
 {% endblock %}
 
 {% block headMisc %}
-{% if not title %}
+{% if not title and posttype == "reply" %}
         <title>In reaction to {{ inreplyto | removehttp }}</title>
+{% elseif not title and posttype == "repost" %}
+        <title>Repost of {{ repostof | removehttp }}</title>
 {% endif %}
     <link rel="manifest" href="/site.webmanifest">
     <link rel="apple-touch-icon" href="/_img/icon.png">
