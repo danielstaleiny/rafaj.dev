@@ -10,4 +10,4 @@ category:
   - ""
 bookmarkof: https://supermemo.guru/wiki/Kill_the_alarm_clock
 ---
-Interesting take on sleep and how important it is. Let's try to not use alarm clock.
+Interesting take on sleep and how important it is. Let's try not to use alarm clock for a while.
