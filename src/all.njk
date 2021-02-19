@@ -6,7 +6,7 @@ description: Past, future and present. List of Daniel Rafaj posts.
 ---
 <h1 class="h1">Archive</h1>
 {% for post in collections.all | reverse %}
-{% if not post.data.allignore %}
+{% if not post.data.allignore and post.url.substring(0,6) !== "/html/"  %}
   <article class="h-entry hentry">
     <h2 class="p-name entry-title mb-0">
       <a class="u-url" href="{{post.url}}" rel="bookmark">
