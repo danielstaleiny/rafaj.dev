@@ -6,7 +6,7 @@ layout: base-re.njk
     <article class="h-entry container mb-4">
       <div class="mx-auto max-w-40 w-full">
         <h1 class="p-name h3">
-            <p class="italic">In reaction to <a href="{{ inreplyto }}">{{ inreplyto | removehttp }}</a></p>
+            <p class="italic">In reaction to <a class="u-in-reply-to" href="{{ inreplyto }}">{{ inreplyto | removehttp }}</a></p>
         </h1>
 
         {% include "partials/u-url.njk" %}
