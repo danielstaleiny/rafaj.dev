@@ -4,3 +4,6 @@
 
 
 * TODO Have a look on how to use org file, and then export it to markdown files, don't commit markdown, push org only.
+
+* TODO update the cheatsheet generator, and remove most of the stuff from tailwindcss config, we don't needed anymore because we use JIT.
+* TODO We also don't need to enable most of the modifiers because they are generated as needed.
