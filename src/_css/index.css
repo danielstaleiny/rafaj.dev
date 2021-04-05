@@ -1,8 +1,8 @@
-@import './tailwind.components.css';
-/* all the classes here */
-@import './components/*.css';
+/* @import './tailwind.components.css'; */
+/* /\* all the classes here *\/ */
+/* @import './components/\*.css'; */
 
 
-@import './tailwind.utilities.css';
-/* all the utils,(modifiers) here */
-@import './utilities.css';
+/* @import './tailwind.utilities.css'; */
+/* /\* all the utils,(modifiers) here *\/ */
+/* @import './utilities.css'; */
