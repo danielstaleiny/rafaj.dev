@@ -554,6 +554,20 @@ const gridflow_ = gen('grid-flow', {
   'col-dense': 'grid-auto-flow: column dense',
 })
 
+const gridautocolumn_ = gen('auto-cols', {
+  auto: 'grid-auto-columns: auto',
+  min: 'grid-auto-columns: min-content',
+  max: 'grid-auto-columns: max-content',
+  fr: 'grid-auto-columns: minmax(0, 1fr)',
+})
+
+const gridautorow_ = gen('auto-rows', {
+  auto: 'grid-auto-rows: auto',
+  min: 'grid-auto-rows: min-content',
+  max: 'grid-auto-rows: max-content',
+  fr: 'grid-auto-rows: minmax(0, 1fr)',
+})
+
 // Grid
 //
 // console.log(gridtemplatecolumn_)
@@ -615,6 +629,20 @@ const Grid = {
     isAllowed: resolvePlugin('gridAutoFlow'),
     variant: config.variants.gridAutoFlow || [],
     desc: 'Controls the auto placement of grid elements.',
+  },
+  'grid-auto-columns': {
+    value: gridautocolumn_,
+    isAllowed: resolvePlugin('gridAutoColumns'),
+    variant: config.variants.gridAutoColumns || [],
+    desc:
+      'Use the auto-cols-{size} utilities to control the size implicitly-created grid columns.',
+  },
+  'grid-auto-rows': {
+    value: gridautorow_,
+    isAllowed: resolvePlugin('gridAutoRows'),
+    variant: config.variants.gridAutoRows || [],
+    desc:
+      'Use the auto-rows-{size} utilities to control the size implicitly-created grid rows.',
   },
 }
 
