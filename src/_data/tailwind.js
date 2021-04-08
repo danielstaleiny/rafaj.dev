@@ -43,9 +43,11 @@ const {
   padding,
   stroke,
   textColor,
+  textOpacity,
   width,
   zIndex,
   placeholderColor,
+  placeholderOpacity,
   strokeWidth,
   gap,
   gridTemplateColumns,
@@ -897,6 +899,22 @@ const fontstyle_ = gen('', {
 
 const fontweight_ = gen('font', fontWeight, (n, v) => `font-weight: ${v}`)
 
+const fontvariantnumeric_ = gen(
+  '',
+  {
+    'normal-nums': 'normal',
+    ordinal: 'ordinal',
+    'slashed-zero': 'slashed-zero',
+    'lining-nums': 'lining-nums',
+    'oldstyle-nums': 'oldstyle-nums',
+    'proportional-nums': 'proportional-nums',
+    'tabular-nums': 'tabular-nums',
+    'diagonal-fractions': 'diagonal-fractions',
+    'stacked-fractions': 'stacked-fractions',
+  },
+  (n, v) => `font-size: ${v}`
+)
+
 const letterspacing_ = gen(
   'tracking',
   letterSpacing,
@@ -922,10 +940,22 @@ const placeholdercolor_ = gen(
   (n, v) => `color: ${v}`
 )
 
+const placeholderopacity_ = gen(
+  'placeholder-opacity',
+  placeholderOpacity,
+  (n, v) => `--tw-placeholder-opacity: ${v}`
+)
+
 const textalign_ = gen(
   'text',
   { left: 'left', center: 'center', right: 'right', justify: 'jutify' },
   (n, v) => `text-align: ${v}`
+)
+
+const textopacity_ = gen(
+  'text-opacity',
+  textOpacity,
+  (n, v) => `--tw-text-opacity: ${v}`
 )
 
 const textdecoration_ = gen(
@@ -948,6 +978,14 @@ const texttransformation_ = gen(
   },
   (n, v) => `text-transform: ${v}`
 )
+
+const textoverflow_ = gen('', {
+  truncate: `overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;`,
+  'overflow-ellipsis': 'text-overflow: ellipsis',
+  'overflow-clip': 'text-overflow: clip',
+})
 
 const verticalalign_ = gen(
   'align',
@@ -979,9 +1017,6 @@ const wordbreak_ = gen('', {
 word-break: normal;`,
   'break-words': 'overflow-wrap: break-word;',
   'break-all': 'word-break: break-all;',
-  truncate: `overflow: hidden;
-text-overflow: ellipsis;
-white-space: nowrap;`,
 })
 
 const Typography = {
@@ -1024,6 +1059,12 @@ const Typography = {
     tip: '.font-{weight}',
     desc: `Sets the font weight.`,
   },
+  'font-variant-numeric': {
+    value: fontvariantnumeric_,
+    isAllowed: resolvePlugin('fontVariantNumeric'),
+    variant: config.variants.fontVariantNumeric || [],
+    desc: `Utilities for controlling the variant of numbers.`,
+  },
   'letter-spacing': {
     value: letterspacing_,
     isAllowed: resolvePlugin('letterSpacing'),
@@ -1052,15 +1093,29 @@ const Typography = {
   },
   '::placeholder color': {
     value: placeholdercolor_,
-    isAllowed: resolvePlugin('color'),
-    variant: config.variants.color || [],
+    isAllowed: resolvePlugin('placeholderColor'),
+    variant: config.variants.placeholderColor || [],
     desc: 'Sets the placeholder color using the ::placeholder pseudo element.',
+  },
+  'placeholder-opacity': {
+    value: placeholderopacity_,
+    isAllowed: resolvePlugin('placeholderOpacity'),
+    variant: config.variants.placeholderOpacity || [],
+    tip: '.placeholder-opacity-{opacity}',
+    desc:
+      'Utilities for controlling the opacity of an element`s placeholder color.',
   },
   'text-align': {
     value: textalign_,
     isAllowed: resolvePlugin('textAlign'),
     variant: config.variants.textAlign || [],
     desc: 'Sets the alignment of text.',
+  },
+  'text-opacity': {
+    value: textopacity_,
+    isAllowed: resolvePlugin('textOpacity'),
+    variant: config.variants.textOpacity || [],
+    desc: 'Utilities for controlling teh opacity of an elements text color',
   },
   'text-decoration': {
     value: textdecoration_,
@@ -1073,6 +1128,12 @@ const Typography = {
     isAllowed: resolvePlugin('textTransform'),
     variant: config.variants.textTransform || [],
     desc: 'Sets the transform attributes of the text.',
+  },
+  'text-overflow': {
+    value: textoverflow_,
+    isAllowed: resolvePlugin('textOverflow'),
+    variant: config.variants.textOverflow || [],
+    desc: 'Utilities for controlling text overflow in an element.',
   },
   'vertical-align': {
     value: verticalalign_,
