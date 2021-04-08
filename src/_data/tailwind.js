@@ -181,7 +181,7 @@ const clear_ = gen('clear', {
   none: 'clear: none',
 })
 
-const isolation_ = gen('isolation', {
+const isolation_ = gen('', {
   isolate: 'isolation: isolate',
   'isolate-auto': 'isolation: auto',
 })
@@ -202,17 +202,29 @@ const objectposition_ = gen(
 
 const overflow_ = gen('overflow', {
   auto: 'overflow: auto',
+  hidden: 'overflow: hidden',
+  visible: 'overflow: visible',
+  scroll: 'overflow: scroll',
   'x-auto': 'overflow-x: auto',
   'y-auto': 'overflow-y: auto',
-  hidden: 'overflow: hidden',
   'x-hidden': 'overflow-x: hidden',
   'y-hidden': 'overflow-y: hidden',
-  visible: 'overflow: visible',
   'x-visible': 'overflow-x: visible',
   'y-visible': 'overflow-y: visible',
-  scroll: 'overflow: scroll',
   'x-scroll': 'overflow-x: scroll',
   'y-scroll': 'overflow-y: scroll',
+})
+
+const overscroll_ = gen('overscroll', {
+  auto: 'overscroll-behavior: auto',
+  contain: 'overscroll-behavior: contain',
+  none: 'overscroll-behavior: none',
+  'y-auto': 'overscroll-behavior-y: auto',
+  'y-contain': 'overscroll-behavior-y: contain',
+  'y-none': 'overscroll-behavior-y: none',
+  'x-auto': 'overscroll-behavior-x: auto',
+  'x-contain': 'overscroll-behavior-x: contain',
+  'x-none': 'overscroll-behavior-x: none',
 })
 
 const position_ = gen('', {
@@ -243,6 +255,12 @@ const trbly_ = gen(
   (n, v) => `top: ${v};
 bottom: ${v};`
 )
+
+const trblExtra_ = gen('', {
+  'top-0': 'top: 0px',
+  'right-0': 'right: 0px',
+  'bottom-0': 'bottom: 0px',
+})
 
 const visibility_ = gen('', {
   visible: 'visibility: visible',
@@ -323,6 +341,13 @@ const Layout = {
     variant: config.variants.overflow || [],
     desc: "Sets how to handle content that's too big for its container.",
   },
+  overscroll: {
+    value: overscroll_,
+    isAllowed: resolvePlugin('overscrollBehavior'),
+    variant: config.variants.overscrollBehavior || [],
+    desc: "Sets how to handle content that's too big for its container.",
+  },
+
   position: {
     value: position_,
     isAllowed: resolvePlugin('position'),
@@ -330,7 +355,7 @@ const Layout = {
     desc: "Sets an element's position.",
   },
   'top,right,bottom,left': {
-    value: [...trbl_, ...trblx_, ...trbly_],
+    value: [...trbl_, ...trblx_, ...trbly_, ...trblExtra_],
     isAllowed: true,
     desc: 'Sets the placement of a positioned element.',
   },
