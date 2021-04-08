@@ -396,35 +396,77 @@ const flexwrap_ = gen('flex', {
 })
 
 const alignitems_ = gen('items', {
-  stretch: 'align-items: stretch',
   start: 'align-items: flex-start',
-  center: 'align-items: center',
   end: 'align-items: flex-end',
+  center: 'align-items: center',
   baseline: 'align-items: baseline',
+  stretch: 'align-items: stretch',
 })
 
 const aligncontent_ = gen('content', {
-  start: 'align-content: flex-start',
   center: 'align-content: center',
+  start: 'align-content: flex-start',
   end: 'align-content: flex-end',
   between: 'align-content: space-between',
   around: 'align-content: space-around',
+  evenly: 'align-content: space-evenly',
 })
 
 const alignself_ = gen('self', {
   auto: 'align-self: auto',
   start: 'align-self: flex-start',
-  center: 'align-self: center',
   end: 'align-self: flex-end',
+  center: 'align-self: center',
   stretch: 'align-self: stretch',
 })
 
 const justifycontent_ = gen('justify', {
   start: 'justify-content: flex-start',
-  center: 'justify-content: center',
   end: 'justify-content: flex-end',
-  between: 'justify-content: stretch',
-  around: 'justify-content: stretch',
+  center: 'justify-content: center',
+  between: 'justify-content: space-between',
+  around: 'justify-content: space-around',
+  evenly: 'justify-content: space-evenly',
+})
+
+const justifyitems_ = gen('justify-items', {
+  start: 'justify-items: start',
+  end: 'justify-items: end',
+  center: 'justify-items: center',
+  stretch: 'justify-items: stretch',
+})
+
+const justifyself_ = gen('justify-self', {
+  auto: 'justify-self: auto',
+  start: 'justify-self: start',
+  end: 'justify-self: end',
+  center: 'justify-self: center',
+  stretch: 'justify-self: stretch',
+})
+
+const placecontent_ = gen('place-content', {
+  center: 'place-content: center',
+  start: 'place-content: start',
+  end: 'place-content: end',
+  between: 'place-content: space-between',
+  around: 'place-content: space-around',
+  evenly: 'place-content: space-evenly',
+  stretch: 'place-content: stretch',
+})
+
+const placeitems_ = gen('place-items', {
+  start: 'place-items: start',
+  end: 'place-items: end',
+  center: 'place-items: center',
+  stretch: 'place-items: stretch',
+})
+
+const placeself_ = gen('place-self', {
+  auto: 'place-self: auto',
+  start: 'place-self: start',
+  end: 'place-self: end',
+  center: 'place-self: center',
+  stretch: 'place-self: stretch',
 })
 
 const flex_ = gen('flex', flex, (n, v) => `flex: ${v}`)
@@ -483,6 +525,42 @@ const Flexbox = {
     isAllowed: resolvePlugin('justifyContent'),
     variant: config.variants.justifyContent || [],
     desc: "Controls how flex items are positioned along container's main axis.",
+  },
+  'justify-items': {
+    value: justifyitems_,
+    isAllowed: resolvePlugin('justifyItems'),
+    variant: config.variants.justifyItems || [],
+    desc:
+      'Use justify-items-start to justify grid items against the start of their inline axis',
+  },
+  'justify-self': {
+    value: justifyself_,
+    isAllowed: resolvePlugin('justifySelf'),
+    variant: config.variants.justifySelf || [],
+    desc:
+      "Use justify-self-auto to align an item based on the value of the grid's justify-items property",
+  },
+
+  'place-content': {
+    value: placecontent_,
+    isAllowed: resolvePlugin('placeContent'),
+    variant: config.variants.placeContent || [],
+    desc:
+      'Utilities for controlling how content is justified and aligned at the same time',
+  },
+  'place-items': {
+    value: placeitems_,
+    isAllowed: resolvePlugin('placeItems'),
+    variant: config.variants.placeItems || [],
+    desc:
+      'Utilities for controlling how items are justified and aligned at the same time.',
+  },
+  'place-self': {
+    value: placeself_,
+    isAllowed: resolvePlugin('placeSelf'),
+    variant: config.variants.placeSelf || [],
+    desc:
+      'Utilities for controlling how an individual item is justified and aligned at the same time.',
   },
   flex: {
     value: flex_,
