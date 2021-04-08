@@ -1,5 +1,6 @@
 module.exports = {
   prefix: '',
+  mode: 'jit',
   purge: {
     content: ['_site/**/*.html'],
     defaultExtractor: (content) => content.match(/[A-Za-z0-9-_:\.\/]+/g) || [],
