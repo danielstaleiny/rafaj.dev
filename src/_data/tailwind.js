@@ -151,18 +151,20 @@ const boxsizing_ = gen('', {
 })
 
 const display_ = gen('', {
-  hidden: 'display: none',
   block: 'display: block',
   'inline-block': 'display: inline-block',
+  inline: 'display: inline',
   flex: 'display: flex',
   'inline-flex': 'display: inline-flex',
-  inline: 'display: inline',
   table: 'display: table',
-  'table-cell': 'display: table-cell',
+  'inline-table': 'display: inline-table',
   'table-caption': 'display: table-caption',
+  'table-cell': 'display: table-cell',
   'table-column': 'display: table-column',
   'table-column-group': 'display: table-column-group',
   'table-footer-group': 'display: table-footer-group',
+  'table-header-group': 'display: table-header-group',
+  'table-row-group': 'display: table-row-group',
 })
 
 const float_ = gen('', {
