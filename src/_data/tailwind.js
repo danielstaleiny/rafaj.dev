@@ -108,7 +108,7 @@ const gen = (prefix, data, fn = (n, v) => v) =>
         return Object.entries(value).map(([name2, value2]) => {
           return {
             [`.${prefix}${
-              name2 == 'default'
+              name2 == 'DEFAULT'
                 ? `-${name}`
                 : prefix != ''
                 ? '-' + name + '-' + name2
@@ -119,7 +119,7 @@ const gen = (prefix, data, fn = (n, v) => v) =>
       } else {
         return {
           [`.${name[0] === '-' ? '-' + prefix : prefix}${
-            name == 'default'
+            name == 'DEFAULT'
               ? ''
               : prefix != ''
               ? name[0] === '-'
@@ -138,6 +138,11 @@ sm (640px) 	max-width: 640px;
 md (768px) 	max-width: 768px;
 lg (1024px) 	max-width: 1024px;
 xl (1280px) 	max-width: 1280px;`,
+})
+
+const boxDecorationBreak_ = gen('', {
+  'decoration-slice': 'box-decoration-break: slice',
+  'decoration-clone': 'box-decoration-break: clone',
 })
 
 const boxsizing_ = gen('', {
@@ -255,6 +260,14 @@ const Layout = {
     desc:
       'Sets the max-width to match the min-width of the current breakpoint.',
   },
+  'box-decoration-break': {
+    value: boxDecorationBreak_,
+    isAllowed: resolvePlugin('boxDecorationBreak'),
+    variant: config.variants.boxDecorationBreak || [],
+    desc:
+      'Use the decoration-slice and decoration-clone utilities to control whether properties like background, border, border-image, box-shadow, clip-page, margin, and padding should be rendered as if the element were one continuous fragment, or distinct blocks.',
+  },
+
   'box-sizing': {
     value: boxsizing_,
     isAllowed: resolvePlugin('boxSizing'),
@@ -1356,7 +1369,7 @@ const pointerevents_ = gen(
 
 const resize_ = gen(
   'resize',
-  { none: 'none', default: 'both', y: 'vertical', x: 'horizontal' },
+  { none: 'none', DEFAULT: 'both', y: 'vertical', x: 'horizontal' },
   (n, v) => `resize: ${v}`
 )
 
