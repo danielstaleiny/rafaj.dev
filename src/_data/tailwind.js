@@ -13,11 +13,13 @@ const {
   // spacing,
   // container, this modifies defaults, it doesn't create classes
   backgroundColor,
+  backgroundOpacity,
   backgroundPosition,
   backgroundSize,
   borderColor,
   borderRadius,
   borderWidth,
+  gradientColorStops,
   boxShadow,
   cursor,
   fill,
@@ -1163,10 +1165,27 @@ const backattachment_ = gen(
   (n, v) => `background-attachment: ${v}`
 )
 
+const backclip_ = gen(
+  'bg-clip',
+  {
+    border: 'border-box',
+    padding: 'padding-box',
+    content: 'content-box',
+    text: 'text',
+  },
+  (n, v) => `background-clip: ${v}`
+)
+
 const backcolor_ = gen(
   'bg',
   backgroundColor,
   (n, v) => `background-color: ${v}`
+)
+
+const backopacity_ = gen(
+  'bg-opacity',
+  backgroundOpacity,
+  (n, v) => `--tw-bg-opacity: ${v}`
 )
 
 const backposition_ = gen(
@@ -1190,6 +1209,35 @@ const backrepeat_ = gen(
 
 const backsize_ = gen('bg', backgroundSize, (n, v) => `background-size: ${v}`)
 
+const backimage_ = gen(
+  'bg',
+  {
+    none: 'none',
+    'gradient-to-t': 'linear-gradient(to top, var(--tw-gradient-stops))',
+    'gradient-to-tr':
+      'background-image: linear-gradient(to top right, var(--tw-gradient-stops))',
+    'gradient-to-r':
+      'background-image: linear-gradient(to right, var(--tw-gradient-stops))',
+    'gradient-to-br':
+      'background-image: linear-gradient(to bottom right, var(--tw-gradient-stops))',
+    'gradient-to-b':
+      'background-image: linear-gradient(to bottom, var(--tw-gradient-stops))',
+    'gradient-to-bl':
+      'background-image: linear-gradient(to bottom left, var(--tw-gradient-stops))',
+    'gradient-to-l':
+      'background-image: linear-gradient(to left, var(--tw-gradient-stops))',
+    'gradient-to-tl':
+      'background-image: linear-gradient(to top left, var(--tw-gradient-stops))',
+  },
+  (n, v) => `background-image: ${v}`
+)
+
+const backgradientcolor_ = gen(
+  'from',
+  gradientColorStops,
+  (n, v) => `--tw-gradient-from: ${v}`
+)
+
 const Backgrounds = {
   'background-attachment': {
     value: backattachment_,
@@ -1197,12 +1245,26 @@ const Backgrounds = {
     variant: config.variants.backgroundAttachment || [],
     desc: 'Sets behavior of background images when scrolling.',
   },
+  'background-clip': {
+    value: backclip_,
+    isAllowed: resolvePlugin('backgroundClip'),
+    variant: config.variants.backgroundClip || [],
+    desc:
+      "Utilities for controlling the bounding box of an element's background.",
+  },
   'background-color': {
     value: backcolor_,
     isAllowed: resolvePlugin('backgroundColor'),
     variant: config.variants.backgroundColor || [],
     tip: '.bg-{color}',
     desc: `Sets background color.`,
+  },
+  'background-opacity': {
+    value: backopacity_,
+    isAllowed: resolvePlugin('backgroundOpacity'),
+    variant: config.variants.backgroundOpacity || [],
+    tip: '.bg-opacity-{opacity}',
+    desc: `Sets background opacity.`,
   },
   'background-position': {
     value: backposition_,
@@ -1222,6 +1284,18 @@ const Backgrounds = {
     variant: config.variants.backgroundSize || [],
     tip: '.bg-{size}',
     desc: `Sets background size of a background image.`,
+  },
+  'background-image': {
+    value: backimage_,
+    isAllowed: resolvePlugin('backgroundImage'),
+    variant: config.variants.backgroundImage || [],
+    desc: `Utilities for controlling an element's background image.`,
+  },
+  'background-gradient-color': {
+    value: backgradientcolor_,
+    isAllowed: resolvePlugin('gradientColorStops'),
+    variant: config.variants.gradientColorStops || [],
+    desc: `Utilities for controlling the color stops in background gradients`,
   },
 }
 
