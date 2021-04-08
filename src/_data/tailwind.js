@@ -171,17 +171,19 @@ const float_ = gen('', {
   'float-right': 'float: right',
   'float-left': 'float: left',
   'float-none': 'float: none',
-  clearfix: `&::after {
-	content: "";
-	display: table;
-	clear: both;
-}`,
+  'flow-root': `USE flow-root INSTEAD OF clearfix !!`,
 })
 
 const clear_ = gen('clear', {
   left: 'clear: left',
   right: 'clear: right',
   both: 'clear: both',
+  none: 'clear: none',
+})
+
+const isolation_ = gen('isolation', {
+  isolate: 'isolation: isolate',
+  'isolate-auto': 'isolation: auto',
 })
 
 const objectfit_ = gen('object', {
@@ -294,6 +296,13 @@ const Layout = {
     isAllowed: resolvePlugin('clear'),
     variant: config.variants.clear || [],
     desc: 'Sets whether an element is moved below preceding floated elements.',
+  },
+  isolation: {
+    value: isolation_,
+    isAllowed: resolvePlugin('isolation'),
+    variant: config.variants.isolation || [],
+    desc:
+      'Use the isolate and isolation-auto utilities to control whether an element should explicitly create a new stacking context.',
   },
   'object-fit': {
     value: objectfit_,
