@@ -17,6 +17,7 @@ const {
   backgroundPosition,
   backgroundSize,
   borderColor,
+  borderOpacity,
   borderRadius,
   borderWidth,
   gradientColorStops,
@@ -72,6 +73,7 @@ const {
   space,
   divideWidth,
   divideColor,
+  divideOpacity,
 } = config.theme
 
 const isEmpty = (obj) => (Object.keys(obj).length > 0 ? false : true)
@@ -1302,6 +1304,12 @@ const Backgrounds = {
 // Borders
 const bordercolor_ = gen('border', borderColor, (n, v) => `border-color: ${v}`)
 
+const borderopacity_ = gen(
+  'border-opacity',
+  borderOpacity,
+  (n, v) => `--tw-border-opacity: ${v}`
+)
+
 const borderstyle_ = gen(
   'border',
   {
@@ -1408,6 +1416,24 @@ const dividereverse_ = gen('divide', {
 
 const dividecolor_ = gen('divide', divideColor, (n, v) => `border-color: ${v}`)
 
+const divideopacity_ = gen(
+  'divide-opacity',
+  divideOpacity,
+  (n, v) => `--tw-divide-opacity: ${v}`
+)
+
+const dividestyle_ = gen(
+  'divide',
+  {
+    solid: 'solid',
+    dashed: 'dashed',
+    dotted: 'dotted',
+    double: 'double',
+    none: 'none',
+  },
+  (n, v) => `border-style: ${v}`
+)
+
 const Borders = {
   'border-color': {
     value: bordercolor_,
@@ -1452,6 +1478,13 @@ const Borders = {
     tip: '.rounded{-side?}{-size?}',
     desc: `Sets border radius.`,
   },
+  'border-opacity': {
+    value: borderopacity_,
+    isAllowed: resolvePlugin('borderOpacity'),
+    variant: config.variants.borderOpacity || [],
+    tip: '.border-opacity-{opacity}',
+    desc: `Sets opacity of borders.`,
+  },
   'divide-width': {
     value: [...dividex_, ...dividey_, ...dividereverse_],
     isAllowed: resolvePlugin('divideWidth'),
@@ -1465,6 +1498,20 @@ const Borders = {
     variant: config.variants.divideColor || [],
     tip: '.divide-{color}',
     desc: `Sets divide color.`,
+  },
+  'divide-opacity': {
+    value: divideopacity_,
+    isAllowed: resolvePlugin('divideOpacity'),
+    variant: config.variants.divideOpacity || [],
+    tip: '.divide-opacity-{opacity}',
+    desc: `Sets divide opacity.`,
+  },
+  'divide-style': {
+    value: dividestyle_,
+    isAllowed: resolvePlugin('divideStyle'),
+    variant: config.variants.divideStyle || [],
+    tip: '.divide-{style}',
+    desc: `Sets divide style.`,
   },
 }
 
