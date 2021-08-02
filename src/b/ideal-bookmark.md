@@ -1,20 +1,13 @@
-\#+BEGIN<sub>EXPORT</sub> markdown
-&#x2014;
+---
 title: Ideal Bookmark approach
 layout: blog.njk
 date: 2021-08-02
 posttype: blog
 tags:
-
--   blog
--   post
-
+  - blog
+  - post
 description: Overview of ideal approach to bookmark websites on the internet.
-&#x2014;
-
-
-
-\#+END<sub>EXPORT</sub>
+---
 The best approach in my opinion would be have local copy saved of the bookmark, and referrence created to that bookmarked website with source and copy. This way you can read website offline if you build your own website with that in mind. You have source, you minimize tracking, and make it accessible to any of you devices. Idealy, you can choose between private and public bookmarks, and have catergories / tags for them too.
 
 
