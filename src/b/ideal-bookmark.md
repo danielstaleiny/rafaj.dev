@@ -15,5 +15,5 @@ The best approach in my opinion would be have local copy saved of the bookmark, 
 
 There is great open-source tool called [SingleFile](https://github.com/gildas-lormeau/SingleFile) which can be extended to be triggered on action in your browser and extended to be more conveint. The SingleFile tool creates html single file which contains everything needed to render website as you would see it in original website. Many folks use archive to persist links on the web, but I think it is better to have control over the links/bookmarks yourself and not rely on 3th party, no matter how good it is.
 
-Therefore I suggest to create SingleFile extention to bookmark websites which outomatically create bookmark post on your own website with help of micropub endpoint.
+Therefore, I would suggest to create SingleFile extention to bookmark websites which automatically create bookmark post on your own website with help of micropub endpoint.
 
