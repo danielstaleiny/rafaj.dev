@@ -54,7 +54,6 @@
     "printWidth": 80
   },
   "browserslist": [
-    "last 1 version",
     "> 1%"
   ]
 }
