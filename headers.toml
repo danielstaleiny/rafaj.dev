@@ -1,0 +1,8 @@
+[[headers]]
+    for = "/"
+    [headers.values]
+        Access-Control-Allow-Origin = "*"
+[[headers]]
+    for = "/index.html"
+    [headers.values]
+        Access-Control-Allow-Origin = "*"
