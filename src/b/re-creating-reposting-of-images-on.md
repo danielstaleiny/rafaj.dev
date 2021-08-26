@@ -1,6 +1,6 @@
 ---
 layout: article.njk
-posttype: article
+posttype: blog
 date: 2021-08-21T07:55:03.459Z
 title: Re-creating reposting of images on IndieWeb like on Tumbler
 tags:
