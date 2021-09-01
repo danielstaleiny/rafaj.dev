@@ -1,10 +1,11 @@
 ---
-layout: article.njk
+layout: blog.njk
 posttype: blog
 date: 2021-08-21T07:55:03.459Z
 title: Re-creating reposting of images on IndieWeb like on Tumbler
 tags:
-  - article
+  - blog
+  - post
 ---
 TLDR; by using browser web-extension we can create option to righ click and select repost to your own site. Ideally this would create local copy of the image with linking to the source for creadits and you can create view of these pictures like on Tumblr/Pinterest.   
   
