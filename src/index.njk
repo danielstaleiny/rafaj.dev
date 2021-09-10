@@ -8,6 +8,12 @@ description: What the Web was ment to be
 <p>
 Posting content about technology, making websites and anything software or hardware related. Functional programming, Offline first websites, indie web. Bring back old web for better experience on the internet.
 </p>
+<div id="test-id">
+
+</div>
+<template id="test-template">
+  <p>[[change.thing]]</p>
+</template>
 {% for post in collections.blog | reverse %}
   <div>
     <h2><a href="{{post.url}}">{{post.data.title}}</a></h2>
