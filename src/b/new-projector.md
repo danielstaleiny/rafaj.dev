@@ -1,7 +1,7 @@
 ---
-title: Look how cozy it is with new projector
+title: Look how cozy it is with new projector at home
 layout: blog.njk
-date: 2021-12-2
+date: 2021-12-02
 posttype: blog
 tags:
   - blog
