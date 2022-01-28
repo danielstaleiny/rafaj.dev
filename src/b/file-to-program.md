@@ -17,7 +17,7 @@ When I was younger, I used to think of people who used command line, and complic
 
 I used to use think Postman was great tool for hitting API manualy and there would not be other way to improve it. Well, yes there could be faster program, or maybe desktop application instead of web UI but that is it. Oh, I was wrong.
 
-I switched from atom to emacs while back and I run into this [REST client](https://github.com/pashky/restclient.el.)
+I switched from atom to emacs while back and I run into this [REST client](https://github.com/pashky/restclient.el)
  What is great about this, that it supports multiline variables and you can compose your endpoint, so if you want to hid production or dev environment and the only difference is root url, you can simply edit the variable and you are good to go. The sheer speed of looking for endpoint needed with simple search find cannot be compare to any other UI. Simply working in file within your editor where you spent most of your day anyway is good bless. You prefer vim keys ? well you can use them because you are using just another file, do you want to hit endpoint simple M-x(Execute) restclient-http-send-current which returns you json. Of course you can also bind it to keypress combination.
 
 
