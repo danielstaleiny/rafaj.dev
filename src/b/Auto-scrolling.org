@@ -1,0 +1,18 @@
+#+TITLE: Auto scrolling feature I would like to see/build
+#+OPTIONS: toc:nil
+#+BEGIN_EXPORT markdown
+---
+title: Auto scrolling feature I would like to see/build
+layout: blog.njk
+date: 2023-01-22
+posttype: blog
+tags:
+  - blog
+  - post
+description: Computer UX idea.
+---
+#+END_EXPORT
+
+I would like to see eye tracking device to automatically detect when I am on bottom of the article to scroll lower. This will allow continous reading without touching mouse or keyboard. I suppose this wouldn't work for all the websites, but for articles and reading mode it will work nicely.
+
+Let me know if you have eye tracking device and if you tried to do similiar ?
