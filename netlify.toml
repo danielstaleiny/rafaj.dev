@@ -2,4 +2,4 @@
   for = "/"
   [headers.values]
     Access-Control-Allow-Origin = "*"
-    Access-Control-Max-Age = 600
+    Access-Control-Max-Age = "600"
