@@ -9,7 +9,7 @@
     "build:generate": "NODE_ENV=production run-s 11ty:build postcss:build:critical postcss:build:async",
     "develop:generate": "run-p 11ty:watch postcss:watch:critical postcss:watch:async cheatsheet",
     "clean": "run-p clean:*",
-    "clean:site": "npx rimraf _site",
+    "clean:site": "rm -rf _site",
     "11ty:build": "eleventy",
     "11ty:watch": "ELEVENTY_ENV=development eleventy --watch --serve",
     "postcss:build:critical": "postcss src/_css/critical.css -o _site/_css/critical.css",
@@ -41,7 +41,6 @@
     "postcss-cli": "^10.1.0",
     "postcss-easy-import": "^4.0.0",
     "prettier": "^2.8.7",
-    "rimraf": "^5.0.0",
     "tailwindcss": "^3.3.1"
   },
   "author": "hala-bala@tutanota.com",
