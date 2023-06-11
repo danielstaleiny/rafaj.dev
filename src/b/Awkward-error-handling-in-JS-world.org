@@ -1,0 +1,218 @@
+#+title: Awkward Error Handling In Js World
+#+OPTIONS: toc:nil
+#+BEGIN_EXPORT markdown
+---
+title: Awkward Error Handling In Js World
+layout: blog.njk
+date: 2023-04-10
+posttype: blog
+tags:
+  - blog
+  - post
+description: Comparing Error handling in javascript and alternative in Purescript.
+---
+#+END_EXPORT
+
+- TODO src code block formating and syntax
+- TODO Different way of handling errors in JS
+- TODO showcasing the issue when facing different types of api and possible failures
+- TODO showcasing difficulty of using try and catch.
+- TODO showcasing difficulty of using then, catch chaining.
+- Monad based Error handling and coding the Happy path.
+
+** Intro
+During my receant work on micro-server deno function I noticed something which bothers me for a long time. I dislike the way javascript handles errors, especially when you want to code happy paths, while handling errors gracefully.
+
+I will showcase different ways to handle errors on the server. How to make them fail early and re-write errors for users of the API. I will show different APIs playing together causing the issue of unity, failing early, scope, types and custom logic.
+
+Later, I will showcase monad based error handling and how monad is essential part of coding happy paths, without worrying about errors and exceptions.
+
+Note: All the examples are based on async logic/functions which are representing real world functions.
+
+
+** Issue with try..catch
+I really like async functions with await keywords. These functions are great for logic and functions which are doing the work. My issue starts when you want to use async function for main composition function which takes all the async logic functions and try to build procedural happy path with them.
+
+Think of it, call 1 endpoint, then call another endpoint, then do some work, then return response. Let's make an example.
+
+What I would call happy path. We do our work and forget about error handling.
+
+#+begin_src js
+async function main() {
+        const ce1 = await callEndpoint1
+        const ce2 = await callEndpoint2
+        const { error, data } = await work(ce1_, ce2)
+        return data
+}
+
+#+end_src
+
+
+However, in real world we need to handle errors on each step, handle different API, return different error objects but consistent error response type. Plus log errors.
+
+#+begin_src js
+async function main() {
+    let ce1_ = undefined
+    try {
+        // Issue of different scope then the rest of the computation,
+        // we are forced to used upper scope data
+        const ce1 = await callEndpoint1
+        ce1_ = ce1
+    } catch ( err) {
+        // Try catch is messing up structure and forcing to handle errors here.
+        const dfE = differentError(err)
+        log(dfE)
+        return dfE
+    }
+    try {
+        const ce2 = await callEndpoint2
+        const { error, data } = await work(ce1_, ce2)
+        if(error){ // API response with error object which is nullable
+            const dfE2 = differentError(error)
+            log(dfE2)
+            return dfE2
+        }
+        return data
+    } catch (err) {
+        // catch both errors
+        // failure of callEndpoint2
+        // failure of work because of network etc.
+        log(err)
+        return err
+    }
+}
+
+#+end_src
+
+We can see how complicated it gets when we start to handling business needs and errors. Try..Catch captures all errors and we loose control over which error, we want to handle and how. We need to split try..catch and parts of the blocks, but that forces us to escape from the scope and forces us to extra variables. Naive implementation of our business needs would yield similiar result to this.
+
+Maybe the issue is try..catch block, maybe if we use promises it would be better.
+
+** Issue with Error in Promises
+
+Main issue with promises I have is due to need of re-throwing. It is confusing, and often time unclear when you need and when you don't need to rethrow errors. Let's take example from above and build chain execution and handle errors.
+
+
+#+begin_src js
+async function main() {
+    return await callEndpoint1
+        .catch((err)=>{
+            const dfE = differentError(err)
+            log(dfE)
+            throw dfE // we cannot return, we need to re-throw
+        })
+        .then(async (ce1)=>{
+            const ce2 = await callEndpoint2.catch(err=>{throw err})
+            return [ce1, ce2] // issue of the scope, we need to return both to not loose our previous result
+        })
+        .then(([ce1, ce2])=>{
+            const { error, data } = await work(ce1, ce2).catch((err)=>{throw err})
+            if(error){
+                const dfE2 = differentError(error)
+                log(dfE2)
+                throw new Error(dfE2)
+            }
+
+        })
+        .catch((err)=>{
+            // Issue of what kind of Error has been emmited, really difficult to differentiate between one or the other
+            log(err)
+            return err
+        })
+
+}
+
+#+end_src
+
+Main issues are, that we are losing scope and we are forced to chain and return all the info we need futher up, adding more context which has to be pushed down. What I don't like is that you are forced to add dummy code which handles errors and rethrow it so it can be handled later in chain functions. .catch has similiar problem of not knowing what errors came from where and what type is it. Also logging of the error is an issue because it can happen multiple times or if not done early, issue of not logging error at all. This all complicates the code significantly and even with simple tasks it can get ugly really fast.
+
+
+Improving Error handling with custom Error object. Imagine that you want consistent custom error which returns error in some kind of structure. You want to notify consumer of the API that error has happened, and give more information and hide real issue from the end user. Something like, if callEndpoint1 has failed, we want to return json object with { msg: "User error, fix your input to endpoint1", statusCode: 400}. This way we know that the issue is on the user side and status code 400 indicates that the server is healthy and ready to serve new valid input. However if underlying api call to other service would fail, we need to handle it with 500 server issue, and fix it ourselfs. Imagine that callEndpoint2 is calling external service which could fail. We don't want to forward status and error to user because issues could be completely on responisibily of our backend but API would return something like API key not valid. This way we want to return 500 to user, log the issue and fix it right away.
+
+The only good way to handle this is to create custom Error object, use both APIs and wrap any API which does not have correct promise errors.
+
+
+#+begin_src js
+
+export class E extends Error {
+  status
+  extra
+  constructor(message: string, status?: number, extra?: any) {
+    super(message)
+    this.name = 'CustomResponseError'
+    this.extra = extra || ''
+    if (status) {
+      this.status = status || 500
+    }
+    log(this.message, this,status, this.extra)
+  }
+  get http() {
+    return new Response(
+      json({
+        msg: this.message,
+        status: this.status,
+        extra: this.extra,
+      }),
+      { status: this.status, ...headers },
+    )
+  }
+}
+
+const callEndpoint1_ = async (ce1) =>{
+    return callEndpoint1(ce1).catch(err=>{
+        throw new E(400, 'Fix your input', err)
+    })
+}
+
+const callEndpoint2_ = async (ce2) =>{
+    return callEndpoint2(ce2).catch(err=>{
+        throw new E(500, 'We need to fix stuff', err)
+    })
+}
+
+const work_ = async (ce1, ce2) =>{
+    // wrapping to extra promise
+    return new Promise(async (succ, fail)=>{
+        const {error, data} = await work(ce2).catch(fail)
+        if(error){
+            return fail(error)
+        }
+        return succ(data)
+
+
+    }).catch(err=>{
+        throw new E(500, 'Different Error', err)
+    })
+}
+
+async function main() {
+    try {
+        const ce1 = await callEndpoint1_
+        const ce2 = await callEndpoint2_
+        const data = await work_(ce1, ce2)
+        return data
+    } catch (err) {
+        if (err instanceof E) {
+            return err.http
+        }
+        return new Response(JSON.stringify(err), {headers: { status: 500 }})
+    }
+}
+
+#+end_src
+
+Ton of extra work, and forcing to wrap functions to extra and handle it there. Issue of not knowing when you have to rethrow. Needs extra calls, and hard to test.
+
+
+** Purescript
+
+What I really miss in js/ts land, is proper type which can fail or succeed. In Purescript there is type Either which can hold Right or Left value. Left is error state and Right is success state. Thanks to that type, each async function could return success or failure, and upon failure you would shortcut the code to end computation. What is great about that is that you could code happy path and use monad laws to codify structure of success or failure without needing to rethrow, rewrap functions etc.
+
+#+begin_src purescript
+main = do
+  ce1 <- callEndpoint1 >>> handleError1
+  ce2 <- callEndpoint2 >>> handleError2
+  work(ce1)(ce2)
+
+
+#+end_src
